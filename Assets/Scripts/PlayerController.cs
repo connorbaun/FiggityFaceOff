@@ -117,9 +117,17 @@ public class PlayerController : MonoBehaviour {
 
         hud.CollectNames(playerNumber, _fighterName); //collect player names for nameplates and send it over to the HUDmanager so it displays the proper name for each player
 
-        speed = theFighters[fighterIndex].moveSpeed;
+        if (playerNumber == 1)
+        {
+            speed = theFighters[fighterIndex].moveSpeed;
+        }
 
-        Debug.Log(canInput);
+        if (playerNumber == 2)
+        {
+            speed = theFighters[fighterIndex2].moveSpeed;
+        }
+
+
 
 
         if (canInput) //if player should be allowed to move during this frame...

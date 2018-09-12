@@ -17,6 +17,8 @@ public class HUDManager : MonoBehaviour {
 
     public Text countdownText; //ref to "Get Ready..." text
 
+    public Text victoryText;
+
 
 
     private string p1FighterName; //we will store p1's fighter's name in this variable which will be used in the nameplate
@@ -81,6 +83,29 @@ public class HUDManager : MonoBehaviour {
         yield return new WaitForSeconds(1); //wait for one sec, then...
 
         countdownText.text = ""; //take the text offscreen
+
+    }
+
+    public IEnumerator VictoryUI(int playNum)
+    {
+
+        //display victorious player's name
+        if (playNum == 1)
+        {
+            victoryText.text = "Player 2 is victorious";
+        }
+
+        if (playNum == 2)
+        {
+            victoryText.text = "Player 1 is victorious";
+        }
+
+        yield return new WaitForSeconds(5);
+
+        victoryText.text = " ";
+        SelectionUI();
+        
+
 
     }
 

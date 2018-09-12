@@ -110,6 +110,26 @@ public class StateManager : MonoBehaviour {
 
     }
 
+    public IEnumerator PlayerVictory()
+    {
+        //force players into idle state animation
+        player1.GetComponent<PlayerAnimator>().ForceIdle(player1.GetComponent<PlayerController>()._fighterName);
+        player2.GetComponent<PlayerAnimator>().ForceIdle(player2.GetComponent<PlayerController>()._fighterName);
+
+        //freeze both motors
+        player1.GetComponent<PlayerController>().FreezeMotor();
+        player2.GetComponent<PlayerController>().FreezeMotor();
+
+        //freeze both controllers
+        player1.GetComponent<PlayerController>().FreezeController();
+        player2.GetComponent<PlayerController>().FreezeController();
+
+
+        yield return new WaitForSeconds(5);
+
+        CharacterSelect();
+    }
+
 
 
 }
