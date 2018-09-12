@@ -119,6 +119,8 @@ public class PlayerController : MonoBehaviour {
 
         speed = theFighters[fighterIndex].moveSpeed;
 
+        Debug.Log(canInput);
+
 
         if (canInput) //if player should be allowed to move during this frame...
         {
@@ -162,7 +164,7 @@ public class PlayerController : MonoBehaviour {
 
             if (Input.GetButtonDown(playerNumber + "Fire2"))
             {
-                motor.PerformDash(_hMov);
+                //motor.PerformDash();
             }
 
             if (Input.GetButtonDown(playerNumber + "Fire3"))
@@ -206,18 +208,20 @@ public class PlayerController : MonoBehaviour {
         motor.ReceiveVelocity(Vector3.zero);
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision) //if a TRIGGER ENTERS YOUR PLAYER...
     {
         if (collision.gameObject.name == "punch hitbox") //if a player is smacked by a punch collider...
         {
             Debug.Log("PLAYER " + playerNumber + " was SOCKED"); //tell us who got socked.
             if (playerNumber == 1)
             {
-                health.p1HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].punchDamage;
+                health.p1HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].punchDamage; //find p1's hp and decrease
+                motor.PerformDash();
             }
             else if (playerNumber == 2)
             {
-                health.p2HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].punchDamage;
+                health.p2HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].punchDamage; //find p2's hp and decrease 
+                motor.PerformDash();
             }
             
         }

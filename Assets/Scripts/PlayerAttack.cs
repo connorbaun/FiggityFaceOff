@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour {
     public IEnumerator Punch()
     {
         punchHitbox.SetActive(true);
-        punchHitbox.GetComponent<BoxCollider2D>().offset = new Vector2(.2f, .1f);
+        punchHitbox.GetComponent<BoxCollider2D>().offset = new Vector2(.5f, .1f);
 
         yield return new WaitForSeconds(.25f);
 

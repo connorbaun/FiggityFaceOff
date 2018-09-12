@@ -11,7 +11,7 @@ public class PlayerMotor : MonoBehaviour {
     private Rigidbody2D rb;
 
     [SerializeField]
-    private float dashForce = 50;
+    private float dashForce = 150;
 
     public float jumpForce = 500;
 
@@ -43,10 +43,11 @@ public class PlayerMotor : MonoBehaviour {
         rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
     }
 
-    public void PerformDash(Vector3 hMov)
+    public void PerformDash()
     {
-        
-        rb.AddForce(hMov * dashForce);
+
+        rb.AddForce(Vector2.up * dashForce);
+        controller.StartCoroutine(controller.UnlockController(.5f));
         
     }
 
