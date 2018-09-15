@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour {
     {
         punchHitbox.SetActive(false);
         myAnim = GetComponent<PlayerAnimator>();
+
 	}
 	
 	// Update is called once per frame
@@ -21,10 +22,11 @@ public class PlayerAttack : MonoBehaviour {
 	}
 
 
-    public IEnumerator Punch()
+    public IEnumerator Punch(float xOffset, float yOffset, float xSize, float ySize)
     {
         punchHitbox.SetActive(true);
-        punchHitbox.GetComponent<BoxCollider2D>().offset = new Vector2(.5f, .1f);
+        punchHitbox.GetComponent<BoxCollider2D>().offset = new Vector2(.2f, .1f);
+        punchHitbox.GetComponent<BoxCollider2D>().size = new Vector2(.2f, .5f);
         punchHitbox.GetComponent<BoxCollider2D>().tag = "hitbox";
 
 
@@ -33,7 +35,7 @@ public class PlayerAttack : MonoBehaviour {
         punchHitbox.SetActive(false);
     }
 
-    public IEnumerator Special()
+    public IEnumerator Special(float xOffset, float yOffset, float xSize, float ySize)
     {
         punchHitbox.SetActive(true);
         //punchHitbox.GetComponent<BoxCollider2D>().offset = new Vector2(.5f, .1f);

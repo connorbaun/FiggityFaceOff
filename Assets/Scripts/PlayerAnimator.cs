@@ -15,6 +15,7 @@ public class PlayerAnimator : MonoBehaviour {
     private PlayerController controller;
     private StaminaManager stamina;
     private PlayerAttack attack;
+    private Fighter myFighter;
 
     //NOTE: we call the correct anims for diff chars by using the same naming conventions for each char's animations. this way, we can just fill in the char's name to retrieve a particular animation for a particular character!
 
@@ -28,9 +29,21 @@ public class PlayerAnimator : MonoBehaviour {
         stamina = FindObjectOfType<StaminaManager>();
 	}
 
+
     public void Update()
     {
         //Debug.Log(facingRight);
+        if (controller.playerNumber == 1)
+        {
+            myFighter = controller.theFighters[controller.fighterIndex];
+            Debug.Log("p1 is playing as " + myFighter.name);
+        }
+
+        if (controller.playerNumber == 2)
+        {
+            myFighter = controller.theFighters[controller.fighterIndex2];
+            Debug.Log("p2 is playing as " + myFighter.name);
+        }
     }
 
     public void SetStartingDirection(int num) //makes sure the players are facing the right way at spawn
@@ -76,7 +89,7 @@ public class PlayerAnimator : MonoBehaviour {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName(fighterName + "_punch") && !anim.GetCurrentAnimatorStateInfo(0).IsName(fighterName + "_special")) //as long as we arent already punching...
         {
             anim.Play(fighterName + "_punch"); //play the punch  anim from the designated character.
-            StartCoroutine(attack.Punch());
+            StartCoroutine(attack.Punch(myFighter.punchOffsetX, myFighter.punchOffsetY, myFighter.punchBoxX, myFighter.punchBoxY));
         }
     }
 
@@ -89,8 +102,8 @@ public class PlayerAnimator : MonoBehaviour {
                                                  //StartCoroutine(controller.UnlockController(specialTime)); //do not allow the player to hit anything
                                                  //StartCoroutine(motor.UnlockMotor(specialTime)); //do not allow the player's character to move
 
-            StartCoroutine(attack.Special());
-
+            StartCoroutine(attack.Special(myFighter.punchOffsetX, myFighter.punchOffsetY, myFighter.punchBoxX, myFighter.punchBoxY));
+            
         }
         
 

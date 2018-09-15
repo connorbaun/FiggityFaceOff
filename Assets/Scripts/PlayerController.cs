@@ -14,11 +14,13 @@ public class PlayerController : MonoBehaviour {
     public List<string> fighters = new List<string>(); //a ref to the character roster in the game
 
     public List<Fighter> theFighters = new List<Fighter>();
-    public Fighter conB = new Fighter("conB", 8, 18, 9);
-    public Fighter conO = new Fighter("conO", 12, 20, 8);
-    public Fighter kev = new Fighter("kevin", 16, 20, 8);
-    public Fighter bern = new Fighter("bern", 5, 20, 15);
-    public Fighter christian = new Fighter("christian", 8, 24, 10);
+    public Fighter conB = new Fighter("conB", 8, 18, 9, .2f, .2f, .5f, .5f, .2f, .2f, 0, 0, 200);
+    public Fighter conO = new Fighter("conO", 12, 20, 8, .2f, .2f, .5f, .5f, .2f, .2f, 0, 0, 200);
+    public Fighter kev = new Fighter("kevin", 16, 20, 8, .2f, .2f, .5f, .5f, .2f, .2f, 0, 0, 200);
+    public Fighter bern = new Fighter("bern", 5, 20, 15, .2f, .2f, .5f, .5f, .2f, .2f, 0, 0, 200);
+    public Fighter christian = new Fighter("christian", 8, 24, 10, .2f, .2f, .5f, .5f, .2f, .2f, 0, 0, 200);
+
+    public Fighter myFighter;
     
     public string _fighterName = null; //a ref to the character's fighter name
 
@@ -120,11 +122,15 @@ public class PlayerController : MonoBehaviour {
         if (playerNumber == 1)
         {
             speed = theFighters[fighterIndex].moveSpeed;
+            myFighter = theFighters[fighterIndex];
+            
         }
 
         if (playerNumber == 2)
         {
             speed = theFighters[fighterIndex2].moveSpeed;
+            myFighter = theFighters[fighterIndex2];
+
         }
 
 
