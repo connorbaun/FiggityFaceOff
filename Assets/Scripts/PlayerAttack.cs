@@ -24,9 +24,12 @@ public class PlayerAttack : MonoBehaviour {
 
     public IEnumerator Punch(float xOffset, float yOffset, float xSize, float ySize)
     {
+        // yield return new WaitForSeconds(punchWindUpTime);
+            //have the player wait until specified time to spawn hit box
+
         punchHitbox.SetActive(true);
-        punchHitbox.GetComponent<BoxCollider2D>().offset = new Vector2(.2f, .1f);
-        punchHitbox.GetComponent<BoxCollider2D>().size = new Vector2(.2f, .5f);
+        punchHitbox.GetComponent<BoxCollider2D>().offset = new Vector2(xOffset, yOffset);
+        punchHitbox.GetComponent<BoxCollider2D>().size = new Vector2(xSize, ySize);
         punchHitbox.GetComponent<BoxCollider2D>().tag = "hitbox";
 
 
@@ -37,9 +40,12 @@ public class PlayerAttack : MonoBehaviour {
 
     public IEnumerator Special(float xOffset, float yOffset, float xSize, float ySize)
     {
+        // yield return new WaitForSeconds(specialWindupTime);
+            //have the player wait until specified time to spawn hitbox
+
         punchHitbox.SetActive(true);
-        //punchHitbox.GetComponent<BoxCollider2D>().offset = new Vector2(.5f, .1f);
-        punchHitbox.GetComponent<BoxCollider2D>().size = new Vector2(1.5f, 1f);
+        punchHitbox.GetComponent<BoxCollider2D>().offset = new Vector2(xOffset, yOffset);
+        punchHitbox.GetComponent<BoxCollider2D>().size = new Vector2(xSize, ySize);
         punchHitbox.GetComponent<BoxCollider2D>().tag = "special";
 
         yield return new WaitForSeconds(.25f);

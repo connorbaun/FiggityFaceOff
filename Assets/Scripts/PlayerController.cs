@@ -14,11 +14,11 @@ public class PlayerController : MonoBehaviour {
     public List<string> fighters = new List<string>(); //a ref to the character roster in the game
 
     public List<Fighter> theFighters = new List<Fighter>();
-    public Fighter conB = new Fighter("conB", 8, 18, 9, .2f, .2f, .5f, .5f, .2f, .2f, 0, 0, 200);
-    public Fighter conO = new Fighter("conO", 12, 20, 8, .2f, .2f, .5f, .5f, .2f, .2f, 0, 0, 200);
-    public Fighter kev = new Fighter("kevin", 16, 20, 8, .2f, .2f, .5f, .5f, .2f, .2f, 0, 0, 200);
-    public Fighter bern = new Fighter("bern", 5, 20, 15, .2f, .2f, .5f, .5f, .2f, .2f, 0, 0, 200);
-    public Fighter christian = new Fighter("christian", 8, 24, 10, .2f, .2f, .5f, .5f, .2f, .2f, 0, 0, 200);
+    public Fighter conB = new Fighter("conB", 8, 18, 9, .2f, .2f, 1f, .5f, .2f, .35f, 0, 0, 200);
+    public Fighter conO = new Fighter("conO", 12, 20, 8, .2f, .2f, 1.25f, .25f, .2f, .35f, 0, .5f, 200);
+    public Fighter kev = new Fighter("kevin", 16, 20, 8, .2f, .2f, 1.5f, .25f, .3f, .5f, .3f, .75f, 200);
+    public Fighter bern = new Fighter("bern", 5, 20, 15, .05f, .2f, .5f, .25f, .2f, .2f, .2f, .2f, 200);
+    public Fighter christian = new Fighter("christian", 8, 24, 10, .2f, .2f, 1f, .5f, .15f, .5f, .5f, .5f, 200);
 
     public Fighter myFighter;
     

@@ -33,16 +33,14 @@ public class PlayerAnimator : MonoBehaviour {
     public void Update()
     {
         //Debug.Log(facingRight);
-        if (controller.playerNumber == 1)
+        if (controller.playerNumber == 1) //if we see you are tagged as player 1 in your controller
         {
-            myFighter = controller.theFighters[controller.fighterIndex];
-            Debug.Log("p1 is playing as " + myFighter.name);
+            myFighter = controller.theFighters[controller.fighterIndex]; //collect myfighter variable from index1
         }
 
-        if (controller.playerNumber == 2)
+        if (controller.playerNumber == 2) //if we see that you are tagged as player 2 in your controller
         {
-            myFighter = controller.theFighters[controller.fighterIndex2];
-            Debug.Log("p2 is playing as " + myFighter.name);
+            myFighter = controller.theFighters[controller.fighterIndex2]; //collect the myfighter variable from index2
         }
     }
 
@@ -85,7 +83,6 @@ public class PlayerAnimator : MonoBehaviour {
 
     public void PunchAnim(string fighterName) //punching anim.
     {
-
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName(fighterName + "_punch") && !anim.GetCurrentAnimatorStateInfo(0).IsName(fighterName + "_special")) //as long as we arent already punching...
         {
             anim.Play(fighterName + "_punch"); //play the punch  anim from the designated character.
@@ -95,18 +92,20 @@ public class PlayerAnimator : MonoBehaviour {
 
     public void SpecialAnim(string fighterName) //special move anim.
     {
-        
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName(fighterName + "_punch") && !anim.GetCurrentAnimatorStateInfo(0).IsName(fighterName + "_special"))
         {
             anim.Play(fighterName + "_special"); //perform special anim here
-                                                 //StartCoroutine(controller.UnlockController(specialTime)); //do not allow the player to hit anything
-                                                 //StartCoroutine(motor.UnlockMotor(specialTime)); //do not allow the player's character to move
-
-            StartCoroutine(attack.Special(myFighter.punchOffsetX, myFighter.punchOffsetY, myFighter.punchBoxX, myFighter.punchBoxY));
+            //StartCoroutine(controller.UnlockController(specialTime)); //do not allow the player to hit anything
+            //StartCoroutine(motor.UnlockMotor(specialTime)); //do not allow the player's character to move
+            StartCoroutine(attack.Special(myFighter.specialOffsetX, myFighter.specialOffsetY, myFighter.specialBoxX, myFighter.specialBoxY)); //spawn hitbox w/ specifications
             
         }
-        
+    }
 
+    public void DeathAnim(string fighterName)
+    {
+        //play the characters death anim here
+        // anim.Play(fighterName + "_death";
     }
 
     public void FlipSprite(float hInput) //this function allows our char to flip dirs when we move left or right

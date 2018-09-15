@@ -19,7 +19,7 @@ public class StateManager : MonoBehaviour {
 
     private HealthManager health; //ref to the healthmanager gameobject
 
-    private HUDManager hud;
+    private HUDManager hud; //reference to the hud manager object in the scene
 
 
 	// Use this for initialization
@@ -101,16 +101,9 @@ public class StateManager : MonoBehaviour {
         player1.GetComponent<PlayerController>().FreezeController();
         player2.GetComponent<PlayerController>().FreezeController();
 
-
-
         //negate any physics on the character
         player1.GetComponent<PlayerController>().FreezeMotor();
         player2.GetComponent<PlayerController>().FreezeMotor();
-
-
-
-
-
 
         //restore lost health on both characters
         health.p1HP = 100;
