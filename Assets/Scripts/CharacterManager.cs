@@ -36,11 +36,14 @@ public class Fighter
     public float specialOffsetX = 0;
     public float specialOffsetY = 0;
 
+    public float punchBoxSpawnTime = 0;
+    public float specialBoxSpawnTime = 0;
+
     public float punchForce = 0;
 
     public Fighter() { } //default (fallback) constructor
 
-    public Fighter(string nm, int punch, int special, int speed, float punX, float punY, float specX, float specY, float punOffX, float punOffY, float specOffX, float specOffY, float pForce) //the real constructor that lets us make new Fighters
+    public Fighter(string nm, int punch, int special, int speed, float punX, float punY, float specX, float specY, float punOffX, float punOffY, float specOffX, float specOffY, float pForce, float pBoxTime, float specBoxTime) //the real constructor that lets us make new Fighters
     {
         name = nm;
         punchDamage = punch;
@@ -55,5 +58,8 @@ public class Fighter
         specialOffsetX = specOffX;
         specialOffsetY = specOffY;
         punchForce = pForce;
+        punchBoxSpawnTime = pBoxTime;
+        specialBoxSpawnTime = specBoxTime;
+
     }
 }

@@ -14,11 +14,11 @@ public class PlayerController : MonoBehaviour {
     public List<string> fighters = new List<string>(); //a ref to the character roster in the game
 
     public List<Fighter> theFighters = new List<Fighter>();
-    public Fighter conB = new Fighter("conB", 8, 18, 9, .2f, .2f, 1f, .5f, .2f, .35f, 0, 0, 200);
-    public Fighter conO = new Fighter("conO", 12, 20, 8, .2f, .2f, 1.25f, .25f, .2f, .35f, 0, .5f, 200);
-    public Fighter kev = new Fighter("kevin", 16, 20, 8, .2f, .2f, 1.5f, .25f, .3f, .5f, .3f, .75f, 200);
-    public Fighter bern = new Fighter("bern", 5, 20, 15, .05f, .2f, .5f, .25f, .2f, .2f, .2f, .2f, 200);
-    public Fighter christian = new Fighter("christian", 8, 24, 10, .2f, .2f, 1f, .5f, .15f, .5f, .5f, .5f, 200);
+    public Fighter conB = new Fighter("conB", 5, 18, 10, .2f, .2f, 1f, .5f, .2f, .35f, 0, 0, 200, .2f, .25f);
+    public Fighter conO = new Fighter("conO", 8, 28, 7, .2f, .2f, 1.25f, .25f, .2f, .35f, 0, .5f, 200, .2f, 1f);
+    public Fighter kev = new Fighter("kevin", 10, 20, 5, .2f, .2f, 1f, .25f, .3f, .5f, .3f, .75f, 200, .25f, .5f);
+    public Fighter bern = new Fighter("bern", 3, 15, 15, .05f, .2f, .5f, .25f, .2f, .2f, .2f, .2f, 200, .25f, .1f);
+    public Fighter christian = new Fighter("christian", 6, 20, 10, .2f, .2f, 1.5f, .5f, .15f, .5f, 0, 0, 200, .25f, .75f);
 
     public Fighter myFighter;
     
@@ -232,12 +232,12 @@ public class PlayerController : MonoBehaviour {
             {
                 if (collision.GetComponent<Collider2D>().tag == "special")
                 {
-                    health.p1HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].specialDamage; //find p1's hp and decrease
+                    health.p1HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex2].specialDamage; //find p1's hp and decrease
                     motor.PerformDash();
                 }
                 else if (collision.GetComponent<Collider2D>().tag == "hitbox")
                 {
-                    health.p1HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].punchDamage; //find p1's hp and decrease
+                    health.p1HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex2].punchDamage; //find p1's hp and decrease
                     motor.PerformDash();
                 }
 

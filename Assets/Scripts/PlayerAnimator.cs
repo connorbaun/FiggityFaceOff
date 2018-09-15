@@ -86,7 +86,7 @@ public class PlayerAnimator : MonoBehaviour {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName(fighterName + "_punch") && !anim.GetCurrentAnimatorStateInfo(0).IsName(fighterName + "_special")) //as long as we arent already punching...
         {
             anim.Play(fighterName + "_punch"); //play the punch  anim from the designated character.
-            StartCoroutine(attack.Punch(myFighter.punchOffsetX, myFighter.punchOffsetY, myFighter.punchBoxX, myFighter.punchBoxY));
+            StartCoroutine(attack.Punch(myFighter.punchOffsetX, myFighter.punchOffsetY, myFighter.punchBoxX, myFighter.punchBoxY, myFighter.punchBoxSpawnTime));
         }
     }
 
@@ -97,7 +97,7 @@ public class PlayerAnimator : MonoBehaviour {
             anim.Play(fighterName + "_special"); //perform special anim here
             //StartCoroutine(controller.UnlockController(specialTime)); //do not allow the player to hit anything
             //StartCoroutine(motor.UnlockMotor(specialTime)); //do not allow the player's character to move
-            StartCoroutine(attack.Special(myFighter.specialOffsetX, myFighter.specialOffsetY, myFighter.specialBoxX, myFighter.specialBoxY)); //spawn hitbox w/ specifications
+            StartCoroutine(attack.Special(myFighter.specialOffsetX, myFighter.specialOffsetY, myFighter.specialBoxX, myFighter.specialBoxY, myFighter.specialBoxSpawnTime)); //spawn hitbox w/ specifications
             
         }
     }

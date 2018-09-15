@@ -22,9 +22,9 @@ public class PlayerAttack : MonoBehaviour {
 	}
 
 
-    public IEnumerator Punch(float xOffset, float yOffset, float xSize, float ySize)
+    public IEnumerator Punch(float xOffset, float yOffset, float xSize, float ySize, float time)
     {
-        // yield return new WaitForSeconds(punchWindUpTime);
+        yield return new WaitForSeconds(time);
             //have the player wait until specified time to spawn hit box
 
         punchHitbox.SetActive(true);
@@ -38,9 +38,9 @@ public class PlayerAttack : MonoBehaviour {
         punchHitbox.SetActive(false);
     }
 
-    public IEnumerator Special(float xOffset, float yOffset, float xSize, float ySize)
+    public IEnumerator Special(float xOffset, float yOffset, float xSize, float ySize, float time)
     {
-        // yield return new WaitForSeconds(specialWindupTime);
+       yield return new WaitForSeconds(time);
             //have the player wait until specified time to spawn hitbox
 
         punchHitbox.SetActive(true);
