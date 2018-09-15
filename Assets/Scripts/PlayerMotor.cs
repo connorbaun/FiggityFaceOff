@@ -36,6 +36,7 @@ public class PlayerMotor : MonoBehaviour {
 	void FixedUpdate ()
     {
         PerformMovement();
+        
 	}
 
     public void PerformMovement()

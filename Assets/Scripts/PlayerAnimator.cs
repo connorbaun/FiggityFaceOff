@@ -86,8 +86,10 @@ public class PlayerAnimator : MonoBehaviour {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName(fighterName + "_punch") && !anim.GetCurrentAnimatorStateInfo(0).IsName(fighterName + "_special"))
         {
             anim.Play(fighterName + "_special"); //perform special anim here
-            //StartCoroutine(controller.UnlockController(specialTime)); //do not allow the player to hit anything
-            //StartCoroutine(motor.UnlockMotor(specialTime)); //do not allow the player's character to move
+                                                 //StartCoroutine(controller.UnlockController(specialTime)); //do not allow the player to hit anything
+                                                 //StartCoroutine(motor.UnlockMotor(specialTime)); //do not allow the player's character to move
+
+            StartCoroutine(attack.Special());
 
         }
         

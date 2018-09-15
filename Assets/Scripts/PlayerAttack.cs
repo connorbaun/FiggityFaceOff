@@ -25,6 +25,20 @@ public class PlayerAttack : MonoBehaviour {
     {
         punchHitbox.SetActive(true);
         punchHitbox.GetComponent<BoxCollider2D>().offset = new Vector2(.5f, .1f);
+        punchHitbox.GetComponent<BoxCollider2D>().tag = "hitbox";
+
+
+        yield return new WaitForSeconds(.25f);
+
+        punchHitbox.SetActive(false);
+    }
+
+    public IEnumerator Special()
+    {
+        punchHitbox.SetActive(true);
+        //punchHitbox.GetComponent<BoxCollider2D>().offset = new Vector2(.5f, .1f);
+        punchHitbox.GetComponent<BoxCollider2D>().size = new Vector2(1.5f, 1f);
+        punchHitbox.GetComponent<BoxCollider2D>().tag = "special";
 
         yield return new WaitForSeconds(.25f);
 

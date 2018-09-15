@@ -220,16 +220,35 @@ public class PlayerController : MonoBehaviour {
     {
         if (collision.gameObject.name == "punch hitbox") //if a player is smacked by a punch collider...
         {
-            Debug.Log("PLAYER " + playerNumber + " was SOCKED"); //tell us who got socked.
+            //Debug.Log("PLAYER " + playerNumber + " was SOCKED"); //tell us who got socked.
+
             if (playerNumber == 1)
             {
-                health.p1HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].punchDamage; //find p1's hp and decrease
-                motor.PerformDash();
+                if (collision.GetComponent<Collider2D>().tag == "special")
+                {
+                    health.p1HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].specialDamage; //find p1's hp and decrease
+                    motor.PerformDash();
+                }
+                else if (collision.GetComponent<Collider2D>().tag == "hitbox")
+                {
+                    health.p1HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].punchDamage; //find p1's hp and decrease
+                    motor.PerformDash();
+                }
+
             }
             else if (playerNumber == 2)
             {
-                health.p2HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].punchDamage; //find p2's hp and decrease 
-                motor.PerformDash();
+                if (collision.GetComponent<BoxCollider2D>().tag == "special")
+                {
+                    health.p2HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].specialDamage; //find p2's hp and decrease 
+                    motor.PerformDash();
+                }
+                else if (collision.GetComponent<Collider2D>().tag == "hitbox")
+                {
+                    health.p2HP -= collision.gameObject.GetComponentInParent<PlayerController>().theFighters[fighterIndex].punchDamage; //find p2's hp and decrease 
+                    motor.PerformDash();
+                }
+
             }
             
         }

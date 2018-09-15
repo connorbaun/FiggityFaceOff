@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StateManager : MonoBehaviour {
 
@@ -82,6 +83,10 @@ public class StateManager : MonoBehaviour {
 
     public void CharacterSelect()
     {
+        //tell controller that we are selecting fighters right now.
+        player1.GetComponent<PlayerController>().isSelecting = true;
+        player2.GetComponent<PlayerController>().isSelecting = true;
+
         //reset player pos/orientations
         player1.transform.position = new Vector3(-10, 0, 0);
         player2.transform.position = new Vector3(10, 0, 0);
@@ -96,13 +101,16 @@ public class StateManager : MonoBehaviour {
         player1.GetComponent<PlayerController>().FreezeController();
         player2.GetComponent<PlayerController>().FreezeController();
 
-        //tell controller that we are selecting fighters right now.
-        player1.GetComponent<PlayerController>().isSelecting = true;
-        player2.GetComponent<PlayerController>().isSelecting = true;
+
 
         //negate any physics on the character
         player1.GetComponent<PlayerController>().FreezeMotor();
         player2.GetComponent<PlayerController>().FreezeMotor();
+
+
+
+
+
 
         //restore lost health on both characters
         health.p1HP = 100;
@@ -125,9 +133,11 @@ public class StateManager : MonoBehaviour {
         player2.GetComponent<PlayerController>().FreezeController();
 
 
+
+
         yield return new WaitForSeconds(5);
 
-        CharacterSelect();
+        SceneManager.LoadScene("ArenaScene");
     }
 
 
